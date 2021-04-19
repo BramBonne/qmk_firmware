@@ -165,7 +165,3 @@ bool led_update_user(led_t leds) {
 
     return true;
 }
-
-
-
-uint8_t led_animation_id = 0;
