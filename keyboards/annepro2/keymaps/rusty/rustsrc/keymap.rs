@@ -41,7 +41,7 @@ keymaps!(
     layer_cnt => 4,
     layer!(  // Default layer
         r!(ESC | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | - | = | BSPC),
-        r!( TAB | Q | W  | E | R | T | Y | U | I | O | P | '[' |']' |[BSLS&LT{2}]),
+        r!( '↹' | Q | W  | E | R | T | Y | U | I | O | P | '[' |']' |[BSLS&LT{2}]),
   r!([CAPS&LT{1}]| A | S | D | F | G | H | J | K | L | ; |QUOTE| '⏎' |_),
         r!( LSFT | _ | Z | X | C | V | B | N | M | , | . | / |[UP&MT{RSFT}]|_),
         r!(LCTL|_|LGUI| LALT |_| _ | SPACE | _ | _ | RALT |'←'|'↓'|'→'|_),
@@ -54,8 +54,8 @@ keymaps!(
         r!( _ |_| _ | _ |_| _ | _ | _ | _ | _ | _ | _ | _ |_),
     ),
     layer!(  // System / Emoji
-        r!( _ | BT1 | BT2 | BT3 | BT4 | USB | BTU | LEDON | LEDOFF | _ | _ | _ | _ | BSPC),
-        r!( [TT{3}] | _ | _ | _ | _ | _ | _ |PGDN|PGUP|PGDN|PSCR|HOME|END| _ ),
+        r!( _ |BT1|BT2|BT3|BT4|USB|BTU|LEDON|LEDOFF|_|_|_ | _ | BSPC),
+        r!( [  ] | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ),
         r!( [  ]  | _ | _ | _ | _ | _ |'←'|'↓'|'↑'|'→'|PGUP|PGDN| _ |_),
         r!( [   ] | _ |'🔇'|'🔉'|'🔊'|"⏮️"|"⏯️"|"⏭️"| _ | _ | _ | _ | _ |_),
         r!( _ |_| _ | _ |_| _ | _ | _ | _ | _ | _ | _ | _ |_),
