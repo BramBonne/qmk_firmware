@@ -8,6 +8,7 @@ crate-type = ["staticlib"]
 path = "rustsrc/lib.rs"
 
 [dependencies]
+cty = "0.2"
 paste = "0.1"
 
 [build-dependencies]

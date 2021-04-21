@@ -1,10 +1,14 @@
 use core::sync::atomic::{AtomicU8, Ordering};
 
 use idle_state::IdleState;
+use keycodes::*;
 use leds::{Color, Leds};
+use *;
 
-static BACKLIGHT_TIMEOUT_MINUTES: u32 = 1;
-static DEFAULT_LED_PROFILE: i32 = 3;
+const BACKLIGHT_TIMEOUT_MINUTES: u32 = 3;
+const DEFAULT_LED_PROFILE: i32 = 3;
+const MATRIX_ROWS: usize = 5;
+const MATRIX_COLS: usize = 14;
 
 static LEDS: Leds = Leds::new(DEFAULT_LED_PROFILE);
 static IDLE_STATE: IdleState = IdleState::new();
@@ -30,6 +34,40 @@ impl From<u8> for Layer {
         }
     }
 }
+
+keymaps!(
+    rows => MATRIX_ROWS,
+    cols => MATRIX_COLS,
+    layer_cnt => 4,
+    layer!(  // Default layer
+        r!(ESC | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | - | = | BSPC),
+        r!( TAB | Q | W  | E | R | T | Y | U | I | O | P | '[' |']' |[BSLS&LT{2}]),
+  r!([CAPS&LT{1}]| A | S | D | F | G | H | J | K | L | ; |QUOTE| '⏎' |_),
+        r!( LSFT | _ | Z | X | C | V | B | N | M | , | . | / |[UP&MT{RSFT}]|_),
+        r!(LCTL|_|LGUI| LALT |_| _ | SPACE | _ | _ | RALT |'←'|'↓'|'→'|_),
+    ),
+    layer!(  // Movement
+        r!('`' | F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12| BSPC),
+        r!( [TT{3}] | _ | _ | _ | _ | _ | _ |PGDN|PGUP|PGDN|PSCR|HOME|END| _ ),
+        r!( [  ]  | _ | _ | _ | _ | _ |'←'|'↓'|'↑'|'→'|PGUP|PGDN| _ |_),
+        r!( [   ] | _ |'🔇'|'🔉'|'🔊'|"⏮️"|"⏯️"|"⏭️"| _ | _ | _ | _ | _ |_),
+        r!( _ |_| _ | _ |_| _ | _ | _ | _ | _ | _ | _ | _ |_),
+    ),
+    layer!(  // System / Emoji
+        r!( _ | BT1 | BT2 | BT3 | BT4 | USB | BTU | LEDON | LEDOFF | _ | _ | _ | _ | BSPC),
+        r!( [TT{3}] | _ | _ | _ | _ | _ | _ |PGDN|PGUP|PGDN|PSCR|HOME|END| _ ),
+        r!( [  ]  | _ | _ | _ | _ | _ |'←'|'↓'|'↑'|'→'|PGUP|PGDN| _ |_),
+        r!( [   ] | _ |'🔇'|'🔉'|'🔊'|"⏮️"|"⏯️"|"⏭️"| _ | _ | _ | _ | _ |_),
+        r!( _ |_| _ | _ |_| _ | _ | _ | _ | _ | _ | _ | _ |_),
+    ),
+    layer!(  // NumPad
+        r!( _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | - | = | _ ),
+        r!(  _  | _ | _ | _ | _ | _ | 7 | 8 | 9 | + | _ | _ | _ | _ ),
+        r!( [  ]  | _ | _ | _ | _ | _ | 4 | 5 | 6 | _ | _ | _ | _ |_),
+        r!( _  | _ | _ | _ | _ | _ | _ | 1 | 2 | 3 | _ | _ | / | _ ),
+        r!( _ |_| _ | _ |_| _ |    0    | _ | _ | . | _ | _ | _ |_),
+    ),
+);
 
 #[no_mangle]
 pub extern "C" fn matrix_init_user() {}
