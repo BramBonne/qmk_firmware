@@ -217,6 +217,15 @@ pub const KC_LEDOFF: u16 = AP2KeyCodes::KC_AP2_LED_OFF as u16;
 #[repr(i16)]
 pub enum EmojiKeyCodes {
     SMILE = AP2KeyCodes::AP2_SAFE_RANGE as i16,
+    SMILE_BLUSH,
     SAD,
+    SURPRISED,
+    WINK,
+    LAUGH,
+    TONGUE,
+    CONFUSED,
+    KISS,
+    SWEAT,
     THUMB,
+    SUNGLASSES,
 }

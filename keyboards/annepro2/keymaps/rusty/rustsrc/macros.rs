@@ -113,12 +113,17 @@ macro_rules! keycode {
     ("🙂") => {
         EmojiKeyCodes::SMILE as u16
     };
-    ("🙁") => {
-        EmojiKeyCodes::SAD as u16
-    };
-    ("👍") => {
-        EmojiKeyCodes::THUMB as u16
-    };
+    ("😊") => {EmojiKeyCodes::SMILE_BLUSH as u16};
+    ("🙁") => {EmojiKeyCodes::SAD as u16};
+    ("😮") => {EmojiKeyCodes::SURPRISED as u16};
+    ("😄") => {EmojiKeyCodes::LAUGH as u16};
+    ("😅") => {EmojiKeyCodes::SWEAT as u16};
+    ("😚") => {EmojiKeyCodes::KISS as u16};
+    ("😉") => {EmojiKeyCodes::WINK as u16};
+    ("😎") => {EmojiKeyCodes::SUNGLASSES as u16};
+    ("😕") => {EmojiKeyCodes::CONFUSED as u16};
+    ("😛") => {EmojiKeyCodes::TONGUE as u16};
+    ("👍") => {EmojiKeyCodes::THUMB as u16};
     ([ ]) => {
         KC__TODO_
     };
