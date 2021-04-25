@@ -213,3 +213,10 @@ pub const KC_BTU: u16 = AP2KeyCodes::KC_AP2_BT_UNPAIR as u16;
 pub const KC_USB: u16 = AP2KeyCodes::KC_AP2_USB as u16;
 pub const KC_LEDON: u16 = AP2KeyCodes::KC_AP2_LED_ON as u16;
 pub const KC_LEDOFF: u16 = AP2KeyCodes::KC_AP2_LED_OFF as u16;
+
+#[repr(i16)]
+pub enum EmojiKeyCodes {
+    SMILE = AP2KeyCodes::AP2_SAFE_RANGE as i16,
+    SAD,
+    THUMB,
+}

@@ -1,5 +1,6 @@
 use core::sync::atomic::{AtomicU8, Ordering};
 
+use emoji::*;
 use idle_state::IdleState;
 use keycodes::*;
 use leds::{Color, Leds};
@@ -54,10 +55,10 @@ keymaps!(
         r!( _ |_| _ | _ |_| _ | _ | _ | _ | _ | _ | _ | _ |_),
     ),
     layer!(  // System / Emoji
-        r!( _ |BT1|BT2|BT3|BT4|USB|BTU|LEDON|LEDOFF|_|_|_ | _ | BSPC),
-        r!( [  ] | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ ),
-        r!( [  ]  | _ | _ | _ | _ | _ |'←'|'↓'|'↑'|'→'|PGUP|PGDN| _ |_),
-        r!( [   ] | _ |'🔇'|'🔉'|'🔊'|"⏮️"|"⏯️"|"⏭️"| _ | _ | _ | _ | _ |_),
+        r!( _ |BT1|BT2|BT3|BT4|USB|BTU|LEDON|LEDOFF|"🙁"|"🙂"|_ | _ | BSPC),
+        r!( [  ] | _ | _ | _ | _ | _ | "👍" | _ | _ | _ | _ | _ | _ | _ ),
+        r!( [  ]  | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ |_),
+        r!( [   ] | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ |_),
         r!( _ |_| _ | _ |_| _ | _ | _ | _ | _ | _ | _ | _ |_),
     ),
     layer!(  // NumPad
@@ -86,6 +87,10 @@ pub extern "C" fn process_keypress(keycode: i16) {
         LEDS.enable();
     }
     IDLE_STATE.reset();
+
+    if let Some(codepoint) = emoji_keycode_to_codepoint(keycode) {
+        send_emoji(codepoint);
+    }
 
     // TODO: Implement tmux navigation here
     /*match(keycode) {

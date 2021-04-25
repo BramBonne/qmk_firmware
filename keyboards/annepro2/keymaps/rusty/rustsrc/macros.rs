@@ -1,4 +1,7 @@
 // Largely copied from https://github.com/houqp/qmk_firmware/blob/massdrop_houqp_rust/rust/src/macros.rs
+
+use keycodes::EmojiKeyCodes;
+
 #[macro_export]
 macro_rules! pad {
     ( $x:ident ) => {
@@ -106,6 +109,15 @@ macro_rules! keycode {
     };
     ("⏮️") => {
         KC_PRVTRK
+    };
+    ("🙂") => {
+        EmojiKeyCodes::SMILE as u16
+    };
+    ("🙁") => {
+        EmojiKeyCodes::SAD as u16
+    };
+    ("👍") => {
+        EmojiKeyCodes::THUMB as u16
     };
     ([ ]) => {
         KC__TODO_
