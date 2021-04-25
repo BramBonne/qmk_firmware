@@ -185,6 +185,7 @@ pub const KC_LGUI: u16 = kb!(LGUI);
 pub const KC_RGUI: u16 = kb!(RGUI);
 pub const KC_END: u16 = kb!(END);
 
+pub const MOD_RALT: u16 = 0x14;
 pub const MOD_RSFT: u16 = 0x12;
 
 #[repr(u16)]

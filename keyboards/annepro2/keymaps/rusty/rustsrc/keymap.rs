@@ -44,7 +44,7 @@ keymaps!(
         r!( '↹' | Q | W  | E | R | T | Y | U | I | O | P | '[' |']' |[BSLS&LT{2}]),
   r!([CAPS&LT{1}]| A | S | D | F | G | H | J | K | L | ; |QUOTE| '⏎' |_),
         r!( LSFT | _ | Z | X | C | V | B | N | M | , | . | / |[UP&MT{RSFT}]|_),
-        r!(LCTL|_|LGUI| LALT |_| _ | SPACE | _ | _ | RALT |'←'|'↓'|'→'|_),
+        r!(LCTL|_|LGUI| LALT |_| _ | SPACE | _ | _ | [DEL&MT{RALT}] |'←'|'↓'|'→'|_),
     ),
     layer!(  // Movement
         r!('`' | F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12| BSPC),
@@ -74,7 +74,8 @@ pub extern "C" fn matrix_init_user() {}
 
 // Code to run after initializing the keyboard
 #[no_mangle]
-pub extern "C" fn keyboard_post_init_user() {}
+pub extern "C" fn keyboard_post_init_user() {
+}
 
 #[no_mangle]
 pub extern "C" fn matrix_scan_user() {}
@@ -105,9 +106,6 @@ pub extern "C" fn housekeeping_task_user() {
         LEDS.disable();
     }
 }
-
-#[no_mangle]
-pub extern "C" fn handle_led_keypress() {}
 
 #[no_mangle]
 pub extern "C" fn layer_changed(new_layer: u8) {
