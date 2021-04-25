@@ -113,6 +113,17 @@ pub extern "C" fn housekeeping_task_user() {
 }
 
 #[no_mangle]
+pub extern "C" fn suspend_power_down_user() {
+    LEDS.disable();
+}
+
+#[no_mangle]
+pub extern "C" fn suspend_wakeup_init_user() {
+    LEDS.enable();
+    IDLE_STATE.reset();
+}
+
+#[no_mangle]
 pub extern "C" fn layer_changed(new_layer: u8) {
     CURRENT_LAYER.store(new_layer, Ordering::Relaxed);
     update_layer_color(new_layer.into());

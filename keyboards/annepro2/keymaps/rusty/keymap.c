@@ -11,6 +11,8 @@ void matrix_init_user(void);
 void keyboard_post_init_user(void);
 void matrix_scan_user(void);
 void housekeeping_task_user(void);
+void suspend_power_down_user(void);
+void suspend_wakeup_init_user(void);
 void process_keypress(uint16_t);
 void layer_changed(uint8_t);
 void caps_lock_changed(bool);
