@@ -76,6 +76,8 @@ pub extern "C" fn matrix_init_user() {}
 // Code to run after initializing the keyboard
 #[no_mangle]
 pub extern "C" fn keyboard_post_init_user() {
+    LEDS.enable();
+    IDLE_STATE.reset();
 }
 
 #[no_mangle]
