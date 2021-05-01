@@ -6,7 +6,7 @@ use keycodes::*;
 use leds::{Color, Leds};
 use *;
 
-const BACKLIGHT_TIMEOUT_MINUTES: u32 = 3;
+const BACKLIGHT_TIMEOUT_MINUTES: u32 = 5;
 const DEFAULT_LED_PROFILE: i32 = 3;
 const MATRIX_ROWS: usize = 5;
 const MATRIX_COLS: usize = 14;
