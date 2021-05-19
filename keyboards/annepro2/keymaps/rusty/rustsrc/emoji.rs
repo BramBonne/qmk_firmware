@@ -23,6 +23,7 @@ pub fn emoji_keycode_to_codepoint(keycode: i16) -> Option<&'static [u8]> {
         keycode if keycode == EmojiKeyCodes::THUMB as i16 => Some(b"1f44d\0"),
         keycode if keycode == EmojiKeyCodes::TONGUE as i16 => Some(b"1f61b\0"),
         keycode if keycode == EmojiKeyCodes::WINK as i16 => Some(b"1f609\0"),
+        keycode if keycode == EmojiKeyCodes::TM as i16 => Some(b"2122\0"),
         _ => None
     }
 }

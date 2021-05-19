@@ -228,4 +228,5 @@ pub enum EmojiKeyCodes {
     SWEAT,
     THUMB,
     SUNGLASSES,
+    TM,
 }

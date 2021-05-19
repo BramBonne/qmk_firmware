@@ -124,6 +124,7 @@ macro_rules! keycode {
     ("😕") => {EmojiKeyCodes::CONFUSED as u16};
     ("😛") => {EmojiKeyCodes::TONGUE as u16};
     ("👍") => {EmojiKeyCodes::THUMB as u16};
+    ("™") => {EmojiKeyCodes::TM as u16};
     ([ ]) => {
         KC__TODO_
     };
