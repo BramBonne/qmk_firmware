@@ -36,6 +36,6 @@ pub fn send_emoji(codepoint: &[u8]) {
         unregister_code(KC_LCTL);
         unregister_code(KC_LSFT);
         send_string(codepoint.as_ptr() as *const u8);
-        tap_code(KC_ENTER);
+        tap_code(KC_SPACE);
     }
 }
