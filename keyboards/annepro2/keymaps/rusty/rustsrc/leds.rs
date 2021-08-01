@@ -1,18 +1,18 @@
-use core::sync::atomic::{AtomicBool, AtomicI32, Ordering};
+use core::sync::atomic::{AtomicBool, AtomicU8, Ordering};
 
 #[link(name = "board")]
 extern "C" {
     fn annepro2LedEnable();
     fn annepro2LedDisable();
-    fn annepro2LedGetProfile() -> i32;
-    fn annepro2LedSetProfile(profile: i32);
+    fn annepro2LedSetProfile(profile: u8);
     fn annepro2LedSetForegroundColor(r: u8, g: u8, b: u8);
     fn annepro2LedResetForegroundColor();
+    static annepro2LedStatus: LedStatus;
 }
 
 pub struct Leds {
     leds_on: AtomicBool,
-    current_profile: AtomicI32,
+    current_profile: AtomicU8,
 }
 
 pub enum Color {
@@ -22,11 +22,21 @@ pub enum Color {
     Orange,
 }
 
+#[repr(C)]
+pub struct LedStatus {
+    pub amount_of_profiles: u8,
+    pub current_profile: u8,
+    pub matrix_enabled: u8,
+    pub is_reactive: u8,
+    pub led_intensity: u8,
+    pub errors: u8,
+}
+
 impl Leds {
-    pub const fn new(default_profile: i32) -> Leds {
+    pub const fn new(default_profile: u8) -> Leds {
         Leds {
             leds_on: AtomicBool::new(false),
-            current_profile: AtomicI32::new(default_profile),
+            current_profile: AtomicU8::new(default_profile),
         }
     }
 
@@ -63,7 +73,7 @@ impl Leds {
 
     pub fn disable(&self) {
         // Store the current profile, as it might have changed outside of our purview
-        let profile = unsafe { annepro2LedGetProfile() };
+        let profile = unsafe { annepro2LedStatus.current_profile };
         unsafe {
             annepro2LedDisable();
         }

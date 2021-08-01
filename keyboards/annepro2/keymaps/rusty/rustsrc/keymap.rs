@@ -7,7 +7,7 @@ use leds::{Color, Leds};
 use *;
 
 const BACKLIGHT_TIMEOUT_MINUTES: u32 = 5;
-const DEFAULT_LED_PROFILE: i32 = 3;
+const DEFAULT_LED_PROFILE: u8 = 4;
 const MATRIX_ROWS: usize = 5;
 const MATRIX_COLS: usize = 14;
 
@@ -93,14 +93,6 @@ pub extern "C" fn process_keypress(keycode: i16) {
     if let Some(codepoint) = emoji_keycode_to_codepoint(keycode) {
         send_emoji(codepoint);
     }
-
-    // TODO: Implement tmux navigation here
-    /*match(keycode) {
-        TMUX_DOWN => SEND_STRING(SS_LCTL("b") SS_TAP(X_DOWN))
-        TMUX_UP => SEND_STRING(SS_LCTL("b") SS_TAP(X_UP))
-        TMUX_LEFT => SEND_STRING(SS_LCTL("b") SS_TAP(X_LEFT))
-        TMUX_RIGHT => SEND_STRING(SS_LCTL("b") SS_TAP(X_RIGHT))
-    }*/
 }
 
 #[no_mangle]
