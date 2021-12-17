@@ -31,6 +31,13 @@ macro_rules! fk {
     };
 }
 
+#[macro_export]
+macro_rules! mk {
+    ( $x:ident ) => {
+        paste::expr! { [<mouse_keys_KC_ $x>] } as u16
+    };
+}
+
 // #[macro_export]
 // macro_rules! ms {
 //     ( $x:ident ) => {
@@ -187,6 +194,11 @@ pub const KC_END: u16 = kb!(END);
 
 pub const MOD_RALT: u16 = 0x14;
 pub const MOD_RSFT: u16 = 0x12;
+
+pub const KC_MS_WH_UP: u16 = mk!(MS_WH_UP);
+pub const KC_MS_WH_DOWN: u16 = mk!(MS_WH_DOWN);
+pub const KC_MS_WH_LEFT: u16 = mk!(MS_WH_LEFT);
+pub const KC_MS_WH_RIGHT: u16 = mk!(MS_WH_RIGHT);
 
 #[repr(u16)]
 pub enum AP2KeyCodes {

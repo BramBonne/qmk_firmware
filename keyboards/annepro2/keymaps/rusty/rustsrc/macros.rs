@@ -1,7 +1,5 @@
 // Largely copied from https://github.com/houqp/qmk_firmware/blob/massdrop_houqp_rust/rust/src/macros.rs
 
-use keycodes::EmojiKeyCodes;
-
 #[macro_export]
 macro_rules! pad {
     ( $x:ident ) => {
@@ -85,6 +83,18 @@ macro_rules! keycode {
     };
     ('←') => {
         KC_LEFT
+    };
+    ('⤒') => {
+        KC_MS_WH_UP
+    };
+    ('⤞') => {
+        KC_MS_WH_RIGHT
+    };
+    ('⤓') => {
+        KC_MS_WH_DOWN
+    };
+    ('⤝') => {
+        KC_MS_WH_LEFT
     };
     ('↹') => {
         KC_TAB
